@@ -1,11 +1,13 @@
 package connectfour;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /**
  * The GameWindow is our JFrame extension which will display our game state.
@@ -18,13 +20,13 @@ public class GameWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	// Our window size, we declare a constants so that we can change it
-	// in just one place if we ever change our mind about how big to 
-	// make it
+	// how tall our titlebar is.. we need to account for this when painting
+	// and when dealing with mouse clicks
+	public static final int TITLE_BAR = 20;
 	
-	// Java constants are declared using the syntax: 'public static final'
-	public static final int WIDTH = 700;
-	public static final int HEIGHT = 600;	
+	// We set our width and height based on our Board and cell size
+	public static final int WINDOW_WIDTH = Board.WIDTH * Board.CELL_SIZE;
+	public static final int WINDOW_HEIGHT = Board.HEIGHT * Board.CELL_SIZE + TITLE_BAR;
 	
 	/**
 	 * This is the constructor.  This is called when you construct a new
@@ -32,10 +34,13 @@ public class GameWindow extends JFrame {
 	 */
 	public GameWindow(){
 		// set our size
-		setSize(WIDTH, HEIGHT);
-		
-		// LAB3 EXTRA CREDIT: make the application close when the user
-		// closes the window
+		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+		// make the application end when the user closes the window
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		// initialize our board
+		m_board = new Board();
 	}
 	
 	/**
@@ -47,12 +52,16 @@ public class GameWindow extends JFrame {
 	 */
 	public void paint(Graphics g){
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		// LAB3:
-		// For Lab3, you want to create a new class, called Board which will
-		// take care of drawing the grid for the game pieces.  Have it implement
-		// a paint() method to draw the grid pieces.  Then create the Board
-		// class in the constructor for GameWindow and call it's paint method here.
+		// Translate the graphics object vertically, so that everything 
+		// will paint below the title bar
+		g.translate(0, TITLE_BAR);
+		
+		// now have our board paint, passing down our graphics object
+		m_board.paint(g);
 	}
+	
+	/** Our board */
+	private Board m_board;
 }
