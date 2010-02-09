@@ -1,10 +1,12 @@
 package connectfour;
 
 import java.awt.Color;
+import java.awt.Event;
+
 
 import java.awt.Graphics;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -41,15 +43,29 @@ public class GameWindow extends JFrame {
 
 		// initialize our board
 		m_board = new Board();
+
+		// add our mouse listener
+		addMouseListener(new MouseAdapter(){
+			public void mouseReleased(MouseEvent e){
+				// convert the coordinates to a cell position
+				int x = e.getX() / Board.CELL_SIZE;
+				int y = (e.getY() - TITLE_BAR) / Board.CELL_SIZE;
+
+				m_board.selectCell(x, y);
+				repaint();
+			}
+		});
 		
-		// LAB5:
-		// For Lab5, we want to add a MouseEventListener that tracks where the
-		// user clicks.  We want to convert the coordinates of that click to
-		// a cell position.  Then add new methods to Board and Cell that let you 
-		// set whether a red circle is drawn in a cell at that position.
-		// 
-		// hint:  look at the addMouseListener() method in JFrame.
-		// hint2: look up MouseListener and MouseAdapter
+		// LAB6:
+		// For Lab6, you will want to add objects to represent the players
+		// in the game. Create a Player class, then create member variables
+		// for each player in GameWindow.  The Player should have an attribute
+		// which represents what color that player is.
+		//
+		// Finally, change Cell so that it can contain a reference to what player
+		// has played in that Cell.  Change the selectCell() method to take in
+		// the current player, and the paint() method to draw either
+		// nothing, or the player's color
 	}
 	
 	/**
