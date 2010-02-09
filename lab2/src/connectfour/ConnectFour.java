@@ -28,8 +28,12 @@ public class ConnectFour {
 		// any code you put here will be run
 		System.out.println("Hello ConnectFour");
 
+		// LAB2:
 		// For LAB2, you want to take the code below, and put it in your own
 		// subclass of JFrame, named GameWindow.
+		//
+		// You will then override the paint() method in GameWindow to change its
+		// background color to BLACK.  Google 'java paint graphics' for clues.
 		//
 		// You can then remove the code below and replace it with the creation
 		// of your new GameWindow class

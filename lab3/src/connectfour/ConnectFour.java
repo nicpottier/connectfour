@@ -28,14 +28,8 @@ public class ConnectFour {
 		// any code you put here will be run
 		System.out.println("Hello ConnectFour");
 
+		// create our game window and show it
 		GameWindow window = new GameWindow();
-		// create a new JFrame
-		JFrame window = new JFrame();
-		
-		// set our size to 700x600
-		window.setSize(700, 600);
-		
-		// make it visible
 		window.setVisible(true);
 	}
 }
