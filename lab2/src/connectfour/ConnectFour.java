@@ -27,6 +27,12 @@ public class ConnectFour {
 	public static void main(String argv[]){
 		// any code you put here will be run
 		System.out.println("Hello ConnectFour");
+
+		// For LAB2, you want to take the code below, and put it in your own
+		// subclass of JFrame, named GameWindow.
+		//
+		// You can then remove the code below and replace it with the creation
+		// of your new GameWindow class
 		
 		// create a new JFrame
 		JFrame window = new JFrame();

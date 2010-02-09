@@ -25,5 +25,13 @@ public class ConnectFour {
 	public static void main(String argv[]){
 		// any code you put here will be run
 		System.out.println("Hello ConnectFour");
+		
+		// LAB1:
+		// For lab1, your task is to show an empty window.  Make it
+		// 700 pixels wide and 600 pixels high.
+		// 
+		// Hint: Google 'java jframe' to find the documentation for the
+		// JFrame class
+		//
 	}
 }
