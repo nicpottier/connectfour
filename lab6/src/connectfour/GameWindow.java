@@ -1,8 +1,6 @@
 package connectfour;
 
 import java.awt.Color;
-import java.awt.Event;
-
 
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
