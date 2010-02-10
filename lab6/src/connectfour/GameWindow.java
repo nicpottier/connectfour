@@ -44,8 +44,8 @@ public class GameWindow extends JFrame {
 		// initialize our board
 		m_board = new Board();
 
-		// add our mouse listener
-		addMouseListener(new MouseAdapter(){
+		// create our mouse listener
+		MouseAdapter clickListener = new MouseAdapter(){
 			public void mouseReleased(MouseEvent e){
 				// convert the coordinates to a cell position
 				int x = e.getX() / Board.CELL_SIZE;
@@ -54,7 +54,10 @@ public class GameWindow extends JFrame {
 				m_board.selectCell(x, y);
 				repaint();
 			}
-		});
+		};
+		
+		// add our mouse listener
+		addMouseListener(clickListener);
 		
 		// LAB6:
 		// For Lab6, you will want to add objects to represent the players
